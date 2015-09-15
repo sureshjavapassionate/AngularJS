@@ -7,17 +7,19 @@ myApp.controller('loginController', ['$scope','$rootScope',function($scope, $roo
 				$rootScope.$log.debug("Login function invoked");				
 				var obj = $scope.session;
 				
-				var userState = "";
+				var userState = "",isAdmin = false;
 				if(obj.userid == "admin"){
-					userState = "associate";
+					userState = "admin";
+					isAdmin = true;
 				}else{
-					userState = "manager";
+					userState = "user";
 				}
 				
 				var jsonString = {
 					"userName" : obj.userid,
 					"password" : obj.password,
-					"userState":userState
+					"userState":userState,
+					"isAdmin":isAdmin
 				};
 				$rootScope.$broadcast('validateUser',jsonString);
 			};

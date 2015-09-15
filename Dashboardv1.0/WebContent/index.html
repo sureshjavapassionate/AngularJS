@@ -10,7 +10,8 @@
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
 </head>
 <body>
-	<div ng-controller="globalController">
+<div ng-include="'templates/menu.html'"></div>
+	<div ng-controller="globalController" style="padding-top: 50px;">
 		<div ng-controller="titleController">
 			<center>
 				<h1>{{appTitle}}</h1>
@@ -33,8 +34,8 @@
 	<script type="text/javascript" src="scripts/global-cntrls.js"></script>
 	<script type="text/javascript" src="scripts/title-cntrls.js"></script>
 	<script type="text/javascript" src="scripts/login-cntrls.js"></script>
-	<script type="text/javascript" src="scripts/associate-cntrls.js"></script>
-	<script type="text/javascript" src="scripts/manager-cntrls.js"></script>
+	<script type="text/javascript" src="scripts/admin-cntrls.js"></script>
+	<script type="text/javascript" src="scripts/user-cntrls.js"></script>
 	<script type="text/javascript" src="scripts/app-interceptor.js"></script>
 </body>
 </html>

@@ -13,6 +13,7 @@ myApp.config(function($stateProvider,$urlRouterProvider,$httpProvider,$browserPr
 		controller:function($state,$rootScope){
 			$rootScope.$log.debug("empty state identified");
 			$state.transitionTo('login');
+			$rootScope.isLoginPage = true;
 		},
 		data:{dashboard:true}
 	})
@@ -22,6 +23,7 @@ myApp.config(function($stateProvider,$urlRouterProvider,$httpProvider,$browserPr
 		controller:function($state,$rootScope){
 			$rootScope.$log.debug("empty_root state identified");
 			$state.transitionTo('login');
+			$rootScope.isLoginPage = true;
 		}
 	})
 	.state('login',{
@@ -30,15 +32,15 @@ myApp.config(function($stateProvider,$urlRouterProvider,$httpProvider,$browserPr
 		controller:"loginController",
 		data:{publicAccess:true}
 	})
-	.state('associate',{
-		url:"/associate",
-		templateUrl:"partial/associate.html",
-		controller:"associateMain"
+	.state('admin',{
+		url:"/admin",
+		templateUrl:"partial/admin.html",
+		controller:"adminMain"
 	})
-	.state('manager',{
-		url:"/manager",
-		templateUrl:"partial/manager.html",
-		controller:"managerMain"
+	.state('user',{
+		url:"/user",
+		templateUrl:"partial/user.html",
+		controller:"userMain"
 	});
 
 	$logProvider.debugEnabled(true);
@@ -47,7 +49,10 @@ myApp.config(function($stateProvider,$urlRouterProvider,$httpProvider,$browserPr
 
 myApp.run(function($rootScope,$state,$http,$log){
 	$rootScope.$log = $log;
-	$rootScope.$log.debug("Dashboardv1.0 is starting");	
+	$rootScope.$log.debug("Dashboardv1.0 is starting");
+	
+	var isLoginPage = false;
+	$rootScope.isLoginPage = true;
 	
 	$rootScope.$on("$stateChangeStart",function(event,toState,toParam,fromState,fromParam){
 		$rootScope.$log.debug("$stateChangeStart triggered : "+fromState.name+" - "+toState.name);
@@ -67,7 +72,6 @@ myApp.run(function($rootScope,$state,$http,$log){
 			$rootScope.$log.debug("$stateChangeStart empty state");
 			return;
 		}
-		
 		return true;
 	});
 });
