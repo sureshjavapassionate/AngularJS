@@ -52,7 +52,9 @@ myApp.run(function($rootScope,$state,$http,$log){
 	$rootScope.$log.debug("Dashboardv1.0 is starting");
 	
 	var isLoginPage = false;
+	var isLogged = false;
 	$rootScope.isLoginPage = true;
+	$rootScope.isLogged = false;
 	
 	$rootScope.$on("$stateChangeStart",function(event,toState,toParam,fromState,fromParam){
 		$rootScope.$log.debug("$stateChangeStart triggered : "+fromState.name+" - "+toState.name);

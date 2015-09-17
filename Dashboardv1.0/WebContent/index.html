@@ -8,21 +8,25 @@
 <meta name="author" content="Suresh Kumar Devaraj">
 <title>Dashboardv1.0</title>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css"></link>
+<link href="css/main.css" rel="stylesheet"></link>
 </head>
 <body>
-<div ng-include="'templates/menu.html'"></div>
+	<div ng-include="'templates/menu.html'"></div>
 	<div ng-controller="globalController" style="padding-top: 50px;">
-		<div ng-controller="titleController">
+		<div ng-controller="titleController" ng-show="!isLogged">
 			<center>
 				<h1>{{appTitle}}</h1>
 			</center>
 		</div>
-		<center>
-			<h1>
-				<span ng-bind="appOwner">!</span>
-			</h1>
-		</center>
-
+		<div ng-show="!isLogged">
+			<center>
+				<h1>
+					<span ng-bind="appOwner"></span>
+				</h1>
+			</center>
+		</div>
 	</div>
 	<div ui-view></div>
 

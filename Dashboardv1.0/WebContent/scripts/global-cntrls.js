@@ -19,8 +19,11 @@ myApp.controller('globalController', [ '$scope', '$rootScope','$state', function
 	$scope.$on('validateUser',function(event,userDetails){
 		$rootScope.$log.debug("User Details - User Name : "+userDetails.userName+" - Password : "+userDetails.password+
 				" userState : "+userDetails.userState+" isUser : "+userDetails.isAdmin);
-		$rootScope.isLoginPage = false;
-		$state.transitionTo(userDetails.userState);
+		if(userDetails.userState != ""){
+			$rootScope.isLoginPage = false;
+			$rootScope.isLogged = true;
+			$state.transitionTo(userDetails.userState);			
+		}
 	});
 	
 	$rootScope.$on('idelRestart',function(){
